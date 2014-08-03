@@ -6,8 +6,8 @@ env = ENV["RACK_ENV"] || "development"
 
 DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
 
-require './lib/peep' 
-require './lib/user'
+require_relative 'models/peep'
+require_relative 'models/user'
 require_relative 'helpers/application'
 
 
@@ -49,3 +49,18 @@ post '/users' do
   end 
 end
 
+get '/sessions/new' do
+  erb :"sessions/new"
+end
+
+post '/sessions' do
+  email, password = params[:email], params[:password]
+  user = User.authenticate(email, password)
+  if user
+    session[:user_id] = user.id
+    redirect to('/')
+  else
+    flash[:errors] = ["The email or password is incorrect"]
+    erb :"sessions/new"
+  end
+end

@@ -5,8 +5,9 @@ env = ENV["RACK_ENV"] || "development"
 		DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
  	end
 
-require './lib/peep'
-require './lib/user'
+require './app/models/peep'
+require './app/models/user'
+
 
 # Run "DataMapper.auto_migrate!" to reboot database
 
