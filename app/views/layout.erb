@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Chitter</title>
+	<title>.chitter</title>
+  <link rel="stylesheet" type="text/css" href="/css/reset.css">  
   <link rel="stylesheet" type="text/css" href="/css/application.css">  
 </head>
-
 <body>
-  <% if current_user %>
-    Welcome, <%= current_user.email %>
-  <% end %>
-  <%= yield %>
+  <div class="wrapper">
+    <%= partial :header %>
+    <%= partial :flash %>
+    <div id='container'>
+      <%= yield %>
+    </div>
+    <div class="push"></div>
+  </div>
+  <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+  <div class="footer">
+    <%= partial :footer %>
+  </div>
 </body>
-
-<% if flash[:errors] && !flash[:errors].empty? %>
-  Sorry, there were the following problems with the form. 
-  <ul id="errors">
-    <% flash[:errors].each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 </html>
+

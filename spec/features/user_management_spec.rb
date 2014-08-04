@@ -1,11 +1,14 @@
 require 'spec_helper'
 
+require_relative 'helpers/session'
+include SessionHelpers
+
 feature "User signs up" do
 
   scenario "when being logged out" do    
     lambda { sign_up }.should change(User, :count).by(1)    
-    expect(page).to have_content("Welcome, hannah@example.com")
-    expect(User.first.email).to eq("hannah@example.com")        
+    expect(page).to have_content("Welcome, alice@example.com")
+    expect(User.first.email).to eq("alice@example.com")        
   end
 
   scenario "with a password that doesn't match" do
@@ -19,19 +22,6 @@ feature "User signs up" do
     lambda { sign_up }.should change(User, :count).by(0)
     expect(page).to have_content("This email is already taken")
   end
-
-  def sign_up(email = "hannah@example.com", 
-              password = "ladybird",
-              password_confirmation = 'ladybird')
-    visit '/users/new'
-    expect(page.status_code).to eq(200)
-    expect(page.status_code).to eq(200)
-    fill_in :email, :with => email
-    fill_in :password, :with => password
-    fill_in :password_confirmation, :with => password_confirmation
-    click_button "Sign up"
-  end
-
 end
 
 feature "User signs in" do
@@ -55,12 +45,20 @@ feature "User signs in" do
     sign_in('hannah@example.com', 'wrong')
     expect(page).not_to have_content("Welcome, hannah@example.com")
   end
+end
 
-  def sign_in(email, password)
-    visit '/sessions/new'
-    fill_in 'email', :with => email
-    fill_in 'password', :with => password
-    click_button 'Sign in'
+feature 'User signs out' do
+
+  before(:each) do
+    User.create(:email => "hannah@example.com", 
+                :password => 'hello', 
+                :password_confirmation => 'hello')
   end
 
+  scenario 'while being signed in' do
+    sign_in('hannah@example.com', 'hello')
+    click_button "Sign out"
+    expect(page).to have_content("Goodbye!")
+    expect(page).not_to have_content("Welcome, hannah@example.com")
+  end
 end

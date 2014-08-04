@@ -1,16 +1,11 @@
-<h1>Welcome to Chitter!</h1>
+<h1>Welcome to .chitter</h1>
 
 Some peeps for your browsing:
 
-<ul>
-  <% @peeps.each do |peep| %>
-    <li><%= peep.content %></li>
-  <% end %>
-</ul>
+  <ul id='peeps'>
+    <% @peeps.each do |peep| %>
+      <%= partial :peep, :locals => {:peep => peep}  %>
+    <% end %>
+  </ul>  
 
-<div id="new-peep">
-  <form action="/peeps" method="post">
-    <input type="text" name="content">
-    <input type="submit" value='Send Peep'>
-  </form>
-</div>
+
