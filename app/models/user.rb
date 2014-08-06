@@ -4,15 +4,17 @@ class User
 
 	include DataMapper::Resource
 
-	# has n, :peeps, :through => Resource
+	has n, :peeps
+	has n, :replies, :through => :peeps
 
 	attr_reader   :password
 	attr_accessor :password_confirmation
 
 	validates_confirmation_of :password 
 
-	property :id, Serial
-	property :email, String, :unique => true, :message => "This email is already taken"
+	property :id,                       Serial
+	property :email,                    String, :unique => true, :message => "Bad luck. This email has already taken :("
+	property :chitter_handle,           String, :unique => true, :message => "Bad luck. This chitter handle has already been taken :(" 
 	property :password_digest,          Text
 	property :password_token,           Text
 	property :password_token_timestamp, Time

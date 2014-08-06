@@ -3,7 +3,13 @@
   <div class='content'><%= peep.content %>
   </div>
   <span class='source'>
-    added yesterday by 
-    <a href="#">hannah@example.com</a>
+    added <%= peep.time_stamp.asctime %> by 
+    <a href="#"><%= peep.user.email %></a>
+    <a href="/replies/new/<%=peep.id %>" id='reply' class='button'>Reply!</a>
+ </span>
+   <span class='replies'>
+    	<% peep.replies.each do |reply| %> 
+    		<%=reply.content %>
+    	<% end %>
   </span>
 </li>

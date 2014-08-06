@@ -27,8 +27,9 @@ end
 feature "User signs in" do
 
   before(:each) do
-    User.create(:email => "hannah@example.com", 
-                :password => 'hello', 
+    User.create(:email                 => "hannah@example.com", 
+                :chitter_handle        => "hannah_example",
+                :password              => 'hello', 
                 :password_confirmation => 'hello')
   end
 
@@ -49,9 +50,10 @@ end
 
 feature 'User signs out' do
 
-  before(:each) do
-    User.create(:email => "hannah@example.com", 
-                :password => 'hello', 
+ before(:each) do
+    User.create(:email                 => "hannah@example.com", 
+                :chitter_handle        => "hannah_example",
+                :password              => 'hello', 
                 :password_confirmation => 'hello')
   end
 

@@ -1,11 +1,13 @@
 require 'sinatra'
 require 'data_mapper'
+require 'dm-timestamps'
 require 'rack-flash'
 require 'sinatra/partial'
 require 'rest_client'
 
 require_relative 'models/peep'
 require_relative 'models/user'
+require_relative 'models/reply'
 
 require_relative 'helpers/application'
 require_relative 'data_mapper_setup'
@@ -14,6 +16,7 @@ require_relative 'controllers/users'
 require_relative 'controllers/sessions'
 require_relative 'controllers/peeps'
 require_relative 'controllers/application'
+require_relative 'controllers/replies'
 
 
 

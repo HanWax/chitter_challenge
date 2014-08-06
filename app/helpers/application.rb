@@ -8,7 +8,7 @@ helpers do
     	time >= (Time.now - 3600)
   end
 
-  def time_stamp
+  def time_stamp_formatted
   	Time.now.asctime
   end 
 end

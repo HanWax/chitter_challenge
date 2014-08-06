@@ -4,11 +4,13 @@ end
 
 post '/peeps' do
 	content = params["content"]
-    @peep = Peep.create(:content => content, :time_stamp => Time.now)
-    if @peep.save
+	time_stamp = params["time_stamp"]
+    
+    if session[:user_id] 
+      @peep = Peep.create(:content => content, :time_stamp => Time.now.asctime, :user_id => User.first.id)
       flash[:notice] = "Peep sent successfully!"
     else
-      flash[:error] = ["Could not post your peep :("]
+      flash[:notice] = "Could not post your peep :( Have you tried signing in?"
     end
     redirect to('/')
 end

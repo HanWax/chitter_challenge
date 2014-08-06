@@ -1,0 +1,7 @@
+<h1>Reply to a peep</h1>
+
+<form action="/replies" method ="post">
+  Reply: <input type="text" name='content' placeholder="reply...">
+  <input type="hidden" name="peep_id" value=<%=@peep_id%> >
+  <input type="submit" value="Reply">
+</form>

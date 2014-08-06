@@ -1,0 +1,9 @@
+<li class='reply'>
+  <div class='content'><%=Reply.first.content %>
+  </div>
+  <span class='source'>
+    added <%= Time.now.asctime %> by 
+    <a href="#"><%= User.first.email %></a>
+  </span>
+</li>
+

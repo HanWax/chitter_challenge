@@ -1,4 +1,4 @@
-class Peep
+class Reply
 
   include DataMapper::Resource
 
@@ -6,8 +6,5 @@ class Peep
   property :content,    Text,    :length => 0..140
   property :time_stamp, DateTime
 
-  belongs_to :user
-  has n,     :replies
-
-
+  belongs_to :peep
 end

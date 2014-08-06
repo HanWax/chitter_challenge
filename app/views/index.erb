@@ -1,11 +1,18 @@
 <h1>Welcome to .chitter</h1>
 
-Some peeps for your browsing:
+Have a little browse of the gems that have been peeped:
 
   <ul id='peeps'>
-    <% @peeps.each do |peep| %>
+    <% @peeps.reverse_each do |peep| %>
       <%= partial :peep, :locals => {:peep => peep}  %>
     <% end %>
-  </ul>  
+  </ul> 
+
+
+
+
+
+
+
 
 
