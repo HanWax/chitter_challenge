@@ -1,31 +1,37 @@
-Challenge:
-===========
+Week 6 Friday Challenge - Twitter Clone
+=======================================
 
-To write a little Twitter clone that will allow the users to post messages to a public stream.
+Objective:
+----------
+* To write a little Twitter clone that will allow the users to post messages to a public stream
 
-Features:
----------
-In order to use chitter as a maker I want to sign up to the service
-In order to user chitter as a maker I want to log in
-In order to avoid others to use my account as a maker I want to log out
-In order to let people know what I am doing as a maker I want to post a message to chitter
-In order to see what people have to say as a maker I want to see all peeps in chronological order
+Requirements:
+-------------
+* Implement a user management system that allows users to sign up, sign in and sign out. 
+* Let users post messages to chitter. Users can only post messages if they are signed in. 
+* Let people view all the messages in chronological order. Users don't have to be signed in to see the messages.
+* Username and email for each user must be unique
+* Messages posted to twitter should have the name of the poster and their user handle
+* BCrypt should be used to make the password secure
+* Use datamapper and postgres to save the data
 
-Notes:
--------
-Makers sign up to chitter with their email, password, name and a user name (i.e. ecomba@makersacademy.com, s3cr3t, Enrique Comba Riepenhausen, ecomba)
-The username and email are unique
-Peeps (posts to chitter) have the name of the maker and their user handle
-Use bcrypt to secure the passwords
-Use data mapper and postgres to save the data
-You don't have to be logged in to see the peeps
-You only can peep if you are logged in.
+Additional challenge:
+---------------------
+* Allow users to reply to messages posted by other users.
+* Display the reply
 
-Bonus:
--------
+Technological Configuration
+---------------------------
+* Ruby
+* Sinatra
+* Datamapper
+* Postgres
+* BCrypt
+* Capybara
+* RSpec
+* HTML
+* CSS
 
-If you have time you can implement the following:
-In order to start a conversation as a maker I want to reply to a peep from another maker.
-      Or / and:
-Work on the css to make it look good (we all like beautiful things).
-
+Next steps
+-----------
+* Further styling - particularly with regard to the reply functionality
